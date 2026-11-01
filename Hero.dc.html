@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hero</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050505}
+a{color:#EDEDE8;text-decoration:none}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn-primary{background:#FF8A3D;color:#0A0A0A;border:1px solid #FF8A3D}
+.btn-primary:hover{background:#050505;color:#FF8A3D}
+.btn-ghost{background:transparent;color:#EDEDE8;border:1px solid rgba(237,237,232,.3)}
+.btn-ghost:hover{border-color:#FF8A3D;color:#FF8A3D}
+</style>
+</helmet>
+
+<section onMouseMove="{{move}}" onMouseLeave="{{leave}}" style="position:relative;width:100%;height:860px;background:#050505;color:#EDEDE8;font-family:'Bricolage Grotesque',system-ui,sans-serif;overflow:hidden">
+
+  <!-- halftone orb (parallax) -->
+  <div aria-hidden="true" style="position:absolute;left:-120px;top:120px;width:560px;height:560px;border-radius:50%;background-image:radial-gradient(circle,#EDEDE8 1.2px,transparent 1.8px);background-size:8px 8px;-webkit-mask-image:radial-gradient(circle at 60% 40%,#000 0,transparent 68%);mask-image:radial-gradient(circle at 60% 40%,#000 0,transparent 68%);opacity:.32;transform:{{orbT}}"></div>
+
+  <!-- network + rings -->
+  <svg viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
+    <g fill="none" stroke="#EDEDE8" stroke-opacity=".12">
+      <sc-for list="{{rings}}" as="r" hint-placeholder-count="3">
+        <circle cx="{{r.cx}}" cy="{{r.cy}}" r="{{r.r}}"/>
+      </sc-for>
+    </g>
+    <g stroke="#EDEDE8" stroke-width="1">
+      <sc-for list="{{edges}}" as="e" hint-placeholder-count="40">
+        <line x1="{{e.x1}}" y1="{{e.y1}}" x2="{{e.x2}}" y2="{{e.y2}}" stroke-opacity="{{e.o}}"/>
+      </sc-for>
+    </g>
+    <g fill="#EDEDE8">
+      <sc-for list="{{nodes}}" as="n" hint-placeholder-count="40">
+        <circle cx="{{n.x}}" cy="{{n.y}}" r="{{n.r}}" fill-opacity="{{n.o}}"/>
+      </sc-for>
+    </g>
+    <g>
+      <sc-for list="{{pins}}" as="p" hint-placeholder-count="4">
+        <g>
+          <line x1="{{p.x}}" y1="{{p.y}}" x2="{{p.lx}}" y2="{{p.ly}}" stroke="#FF8A3D" stroke-opacity=".7"/>
+          <circle cx="{{p.x}}" cy="{{p.y}}" r="5" fill="#FF8A3D"/>
+          <circle cx="{{p.x}}" cy="{{p.y}}" r="12" fill="none" stroke="#FF8A3D" stroke-opacity=".35"/>
+          <text x="{{p.tx}}" y="{{p.ty}}" fill="#C9C9C2" font-size="11" letter-spacing="1.5" font-family="JetBrains Mono, monospace">{{p.label}}</text>
+        </g>
+      </sc-for>
+    </g>
+    <!-- cursor reticle -->
+    <g>
+      <circle cx="{{cur.x}}" cy="{{cur.y}}" r="22" fill="none" stroke="#FF8A3D" stroke-opacity="{{cur.o}}"/>
+      <circle cx="{{cur.x}}" cy="{{cur.y}}" r="3" fill="#FF8A3D" fill-opacity="{{cur.o}}"/>
+      <text x="{{cur.tx}}" y="{{cur.ty}}" fill="#FF8A3D" fill-opacity="{{cur.o}}" font-size="10" font-family="JetBrains Mono, monospace">{{cur.label}}</text>
+    </g>
+  </svg>
+
+  <!-- top meta strip -->
+  <div class="mono" style="position:absolute;top:96px;left:64px;right:64px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C">
+    <span>Portfolio / 2026</span>
+    <span>26.22&#176;N &#183; 78.18&#176;E &#183; Gwalior, IN</span>
+  </div>
+
+  <!-- headline block -->
+  <div style="position:absolute;left:64px;right:64px;bottom:128px;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none">
+    <div class="mono" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D;margin-bottom:24px;display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:#FF8A3D"></span>AI Engineer &#183; Predusk Technology</div>
+    <h1 style="margin:0;font-size:176px;line-height:.86;font-weight:800;letter-spacing:-.045em;text-transform:uppercase">Aaryan<br><span style="color:transparent;-webkit-text-stroke:2px #EDEDE8">Sahu</span></h1>
+    <p style="margin:36px 0 0;font-size:26px;line-height:1.3;max-width:560px;color:#D8D8D2;font-weight:400;letter-spacing:-.01em">Building intelligent systems that <span style="color:#FF8A3D">actually ship.</span></p>
+    <p class="mono" style="margin:16px 0 0;font-size:12px;letter-spacing:.06em;color:#A3A39C;max-width:560px;line-height:1.7">Generative AI &#183; Agentic AI &#183; Machine Learning &#183; Computer Vision &#183; Backend</p>
+    <div style="display:flex;gap:14px;margin-top:36px;pointer-events:auto;flex-wrap:wrap">
+      <a href="#projects" class="mono btn-primary" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:17px 30px;border-radius:999px;display:inline-block">View projects &#8595;</a>
+      <a href="https://github.com/aryan07-exe" class="mono btn-ghost" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:17px 30px;border-radius:999px;display:inline-block">GitHub &#8599;</a>
+    </div>
+  </div>
+
+  <!-- right-side hint -->
+  <div class="mono" style="position:absolute;right:64px;bottom:128px;text-align:right;font-size:11px;line-height:1.8;letter-spacing:.1em;color:#A3A39C;text-transform:uppercase">
+    <div>move your cursor</div>
+    <div style="color:#FF8A3D">the network reaches toward it</div>
+  </div>
+
+  <!-- ticker -->
+  <div style="position:absolute;left:0;right:0;bottom:0;height:64px;border-top:1px solid rgba(237,237,232,.14);display:flex;align-items:center;gap:40px;padding:0 64px;overflow:hidden;white-space:nowrap;background:rgba(5,5,5,.7)">
+    <span class="mono" style="font-size:11px;letter-spacing:.14em;color:#FF8A3D;flex:none">SCROLL &#8595;</span>
+    <span class="mono" style="font-size:12px;letter-spacing:.12em;color:#A3A39C;text-transform:uppercase;display:flex;gap:40px"><span>LangGraph</span><span>/</span><span>RAG</span><span>/</span><span>PyTorch</span><span>/</span><span>FastAPI</span><span>/</span><span>Multi-agent systems</span><span>/</span><span>OpenCV</span><span>/</span><span>PostgreSQL</span><span>/</span><span>Docker</span><span>/</span><span>Voice AI</span></span>
+  </div>
+</section>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":860}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      const t = ((this.state && this.state.t) || 0) + 1;
+      this.setState({ t });
+    }, 90);
+  }
+  componentWillUnmount() { if (this._iv) clearInterval(this._iv); }
+
+  build() {
+    if (this._mesh) return this._mesh;
+    let a = 11;
+    const rnd = () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    const bands = [
+      { x1: 540, y1: 850, x2: 1000, y2: 470, n: 62, w: 190 },
+      { x1: 1470, y1: 10, x2: 1090, y2: 350, n: 62, w: 190 }
+    ];
+    const nodes = [];
+    bands.forEach((b) => {
+      const len = Math.hypot(b.x2 - b.x1, b.y2 - b.y1);
+      const nx = -(b.y2 - b.y1) / len, ny = (b.x2 - b.x1) / len;
+      for (let i = 0; i < b.n; i++) {
+        const t = rnd();
+        const taper = 0.3 + 0.7 * Math.sin(Math.PI * (0.1 + 0.85 * t));
+        const off = (rnd() + rnd() - 1) * b.w * taper;
+        nodes.push({ x: b.x1 + (b.x2 - b.x1) * t + nx * off, y: b.y1 + (b.y2 - b.y1) * t + ny * off, r: 1 + rnd() * 1.5 });
+      }
+    });
+    const seen = {};
+    const edges = [];
+    nodes.forEach((p, i) => {
+      const near = nodes.map((q, j) => ({ j, d: Math.hypot(p.x - q.x, p.y - q.y) }))
+        .filter((o) => o.j !== i && o.d < 150).sort((m, n) => m.d - n.d).slice(0, 3);
+      near.forEach((o) => { const k = i < o.j ? i + '-' + o.j : o.j + '-' + i; if (!seen[k]) { seen[k] = 1; edges.push([i, o.j]); } });
+    });
+    this._mesh = { nodes, edges };
+    return this._mesh;
+  }
+
+  renderVals() {
+    const s = this.state || {};
+    const t = s.t || 0;
+    const live = !!s.live;
+    const cx = live ? s.cx : 1000;
+    const cy = live ? s.cy : 450;
+    const m = this.build();
+    const R = 300;
+    const pos = m.nodes.map((n, i) => {
+      const dx = cx - n.x, dy = cy - n.y;
+      const d = Math.hypot(dx, dy) || 1;
+      const f = d < R ? Math.pow(1 - d / R, 2) * (live ? 90 : 0) : 0;
+      return { x: n.x + (dx / d) * f + Math.sin(t * 0.07 + i) * 4, y: n.y + (dy / d) * f + Math.cos(t * 0.06 + i * 1.3) * 4, r: n.r, near: d < R ? 1 - d / R : 0 };
+    });
+    const nodes = pos.map((p) => ({ x: p.x.toFixed(1), y: p.y.toFixed(1), r: (p.r + p.near * 1.6).toFixed(2), o: (0.45 + p.near * 0.55).toFixed(2) }));
+    const edges = m.edges.map(([i, j]) => {
+      const p = pos[i], q = pos[j];
+      const near = Math.max(p.near, q.near);
+      return { x1: p.x.toFixed(1), y1: p.y.toFixed(1), x2: q.x.toFixed(1), y2: q.y.toFixed(1), o: (0.14 + near * 0.6).toFixed(2) };
+    });
+    const px = (cx - 1000) * 0.03;
+    const rings = [-120, 0, 120].map((o) => ({ cx: 1000 + o + px, cy: 560 + (cy - 450) * 0.02, r: 200 }));
+    const pins = [
+      { x: 1210, y: 230, lx: 1260, ly: 190, tx: 1266, ty: 186, label: 'LLM AGENTS' },
+      { x: 880, y: 610, lx: 830, ly: 650, tx: 700, ty: 666, label: 'RAG / SEARCH' },
+      { x: 1250, y: 560, lx: 1300, ly: 600, tx: 1306, ty: 616, label: 'VISION' },
+      { x: 770, y: 330, lx: 720, ly: 290, tx: 620, ty: 286, label: 'BACKEND' }
+    ];
+    return {
+      nodes, edges, rings, pins,
+      cur: { x: cx.toFixed(0), y: cy.toFixed(0), o: live ? 0.9 : 0, tx: (cx + 30).toFixed(0), ty: (cy - 14).toFixed(0), label: 'x ' + Math.round(cx) + ' · y ' + Math.round(cy) },
+      orbT: 'translate(' + ((cx - 720) * -0.03).toFixed(1) + 'px,' + ((cy - 430) * -0.03).toFixed(1) + 'px)',
+      move: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        const sc = Math.max(r.width / 1440, r.height / 860);
+        const ox = (r.width - 1440 * sc) / 2, oy = (r.height - 860 * sc) / 2;
+        this.setState({ live: true, cx: (e.clientX - r.left - ox) / sc, cy: (e.clientY - r.top - oy) / sc });
+      },
+      leave: () => this.setState({ live: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

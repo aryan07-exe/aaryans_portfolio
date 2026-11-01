@@ -1,0 +1,207 @@
+.achievements {
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.ach-head {
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 24px 0 48px;
+  font-weight: 600;
+  max-width: 900px;
+}
+
+.award-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.award-card {
+  flex: 1 1 300px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  padding: 32px 32px 36px;
+  background: var(--soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 320px;
+  transition:
+    border-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.award-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.45s ease;
+}
+
+.award-card:hover {
+  border-color: rgba(255, 107, 53, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.award-card:hover::after {
+  height: 100%;
+}
+
+.award-venue {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.award-rank {
+  font-family: var(--display);
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--accent);
+  text-transform: capitalize;
+}
+
+.award-headline {
+  margin: 10px 0 0;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.award-highlight {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a8a6a0;
+  border: 1px solid #333;
+  border-radius: 999px;
+  padding: 8px 14px;
+  align-self: flex-start;
+}
+
+.award-note {
+  font-size: 15px;
+  color: #8f8d87;
+  line-height: 1.55;
+  margin: 18px 0 0;
+  flex: 1;
+}
+
+.ach-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.ach-strip {
+  flex: 1 1 400px;
+  border: 1px solid var(--line);
+  padding: 28px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ach-strip__label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex: none;
+}
+
+.ach-strip p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  flex: 1 1 280px;
+  color: #b9b7b1;
+}
+
+.journey-tag {
+  margin-top: 40px;
+}
+
+.journey-head {
+  margin-bottom: 56px;
+}
+
+.journey-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.journey-step {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 0 20px 0 0;
+}
+
+.journey-rail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.journey-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  flex: none;
+}
+
+.journey-dot--on {
+  background: var(--accent);
+}
+
+.journey-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(243, 241, 235, 0.2);
+}
+
+.journey-meta {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.journey-title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.journey-text {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.55;
+  margin: 0;
+}

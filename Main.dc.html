@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Aaryan Sahu Portfolio</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050505}
+a{color:#EDEDE8;text-decoration:none}
+a:hover{color:#FF8A3D}
+button{font-family:inherit;cursor:pointer}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.navlink{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#A3A39C;padding:12px 4px}
+.navlink:hover{color:#FF8A3D}
+.btn-primary{background:#FF8A3D;color:#0A0A0A;border:1px solid #FF8A3D}
+.btn-primary:hover{background:#050505;color:#FF8A3D}
+.btn-ghost{background:transparent;color:#EDEDE8;border:1px solid rgba(237,237,232,.3)}
+.btn-ghost:hover{border-color:#FF8A3D;color:#FF8A3D}
+.chip{transition:border-color .2s,color .2s,transform .2s}
+.chip:hover{border-color:#FF8A3D;color:#FF8A3D;transform:translateY(-2px)}
+.panel{transition:flex-grow .55s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.stat:hover .statnum{color:#FF8A3D}
+.statnum{transition:color .25s}
+.card{transition:border-color .3s,transform .3s}
+.card:hover{border-color:#FF8A3D;transform:translateY(-4px)}
+</style>
+</helmet>
+
+<div id="top" style="position:relative;width:100%;background:#050505;color:#EDEDE8;font-family:'Bricolage Grotesque',system-ui,sans-serif;overflow:hidden">
+
+  <!-- NAV -->
+  <header style="position:absolute;top:0;left:0;right:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:24px 64px;box-sizing:border-box">
+    <a href="#top" class="mono" style="font-size:18px;font-weight:500;letter-spacing:.04em;padding:8px 0">AS<span style="color:#FF8A3D">/</span></a>
+    <nav aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:20px">
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#experience">Experience</a>
+      <a class="navlink" href="#projects">Projects</a>
+      <a class="navlink" href="#skills">Skills</a>
+      <a class="navlink" href="#achievements">Achievements</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="mono btn-ghost" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 20px;border-radius:999px;display:inline-block">Let's talk ↗</a>
+  </header>
+
+  <!-- HERO -->
+  <dc-import name="Hero" hint-size="100%,860px"></dc-import>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding:140px 64px 100px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">01</span><span>About</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:72px">
+      <div style="flex:1 1 560px;min-width:0">
+        <h2 style="margin:0 0 36px;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em">I build intelligent systems that turn AI capabilities into <span style="color:#FF8A3D">usable, reliable software.</span></h2>
+        <p style="margin:0 0 20px;font-size:19px;line-height:1.6;color:#A3A39C;max-width:640px">I'm a Computer Science engineer working at the intersection of machine learning, generative AI, intelligent agents and software engineering. My work ranges from production quality systems for data-annotation platforms to multi-agent LLM workflows, voice AI, RAG applications, multimodal deepfake detection and autonomous coding agents.</p>
+        <p style="margin:0;font-size:19px;line-height:1.6;color:#A3A39C;max-width:640px">I like working close to the system: designing the architecture, building the backend, integrating models and tools, and turning research ideas into software people can actually use.</p>
+      </div>
+      <aside style="flex:0 1 380px;min-width:280px;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:28px;box-sizing:border-box;align-self:flex-start;background:#0A0A09">
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D;margin-bottom:20px">profile.json</div>
+        <sc-for list="{{profile}}" as="row" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid rgba(237,237,232,.1)">
+            <span class="mono" style="font-size:12px;color:#A3A39C;letter-spacing:.06em">{{row.k}}</span>
+            <span style="font-size:15px;text-align:right">{{row.v}}</span>
+          </div>
+        </sc-for>
+      </aside>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:96px;border-top:1px solid rgba(237,237,232,.14)">
+      <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+        <div class="stat" style="padding:36px 28px 8px 0;border-right:1px solid rgba(237,237,232,.08);min-width:0">
+          <div class="statnum" style="font-size:72px;line-height:1;font-weight:800;letter-spacing:-.03em">{{s.v}}</div>
+          <div class="mono" style="margin-top:16px;font-size:12px;line-height:1.6;color:#A3A39C;letter-spacing:.03em">{{s.l}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="padding:100px 64px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">02</span><span>Experience</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <h2 style="margin:0 0 64px;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em;max-width:900px">From research labs to production AI infrastructure.</h2>
+
+    <div style="display:flex;flex-wrap:wrap;gap:48px">
+      <div role="tablist" aria-label="Experience" style="flex:0 1 340px;min-width:260px;display:flex;flex-direction:column">
+        <sc-for list="{{expList}}" as="e" hint-placeholder-count="4">
+          <button role="tab" aria-selected="{{e.sel}}" onClick="{{e.pick}}" style="text-align:left;background:transparent;border:0;border-top:1px solid rgba(237,237,232,.14);padding:24px 0 24px 20px;color:{{e.color}};border-left:2px solid {{e.bar}};display:block;width:100%">
+            <div class="mono" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A3A39C;margin-bottom:8px">{{e.dates}}</div>
+            <div style="font-size:26px;font-weight:600;letter-spacing:-.01em">{{e.org}}</div>
+            <div style="font-size:15px;color:#A3A39C;margin-top:4px">{{e.role}}</div>
+          </button>
+        </sc-for>
+      </div>
+
+      <div role="tabpanel" style="flex:1 1 560px;min-width:0;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:44px;box-sizing:border-box;background:#0A0A09;position:relative">
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D;margin-bottom:16px">{{exp.place}} · {{exp.dates}}</div>
+        <h3 style="margin:0 0 8px;font-size:40px;font-weight:600;letter-spacing:-.02em">{{exp.role}}</h3>
+        <div style="font-size:18px;color:#A3A39C;margin-bottom:32px;max-width:640px;line-height:1.5">{{exp.narrative}}</div>
+        <ul style="margin:0 0 36px;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{exp.bullets}}" as="b" hint-placeholder-count="4">
+            <li style="display:flex;gap:16px;font-size:16px;line-height:1.55;color:#D8D8D2"><span class="mono" style="color:#FF8A3D;flex:none">&gt;</span><span>{{b.t}}</span></li>
+          </sc-for>
+        </ul>
+        <sc-if value="{{exp.hasMetrics}}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(237,237,232,.14);margin-bottom:28px">
+            <sc-for list="{{exp.metrics}}" as="m" hint-placeholder-count="3">
+              <div style="flex:1 1 150px;padding:24px 20px 0 0">
+                <div style="font-size:44px;font-weight:800;letter-spacing:-.02em;color:#FF8A3D;line-height:1">{{m.v}}</div>
+                <div class="mono" style="font-size:11px;color:#A3A39C;margin-top:10px;line-height:1.5">{{m.l}}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{exp.tags}}" as="t" hint-placeholder-count="5">
+            <span class="mono" style="font-size:11px;letter-spacing:.04em;border:1px solid rgba(237,237,232,.2);border-radius:999px;padding:7px 14px;color:#D8D8D2">{{t.t}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="padding:100px 64px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">03</span><span>Featured projects</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px">
+      <h2 style="margin:0;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em;max-width:820px">End-to-end systems, model to product.</h2>
+      <div class="mono" style="font-size:12px;color:#A3A39C;letter-spacing:.06em">hover or focus a panel to open it</div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <sc-for list="{{projects}}" as="p" hint-placeholder-count="4">
+        <div class="panel" onMouseEnter="{{p.pick}}" style="flex:{{p.flex}} 1 220px;min-width:0;height:620px;box-sizing:border-box;border:1px solid {{p.border}};border-radius:4px;background:#0A0A09;overflow:hidden;position:relative">
+          <button onClick="{{p.pick}}" onFocus="{{p.pick}}" aria-expanded="{{p.active}}" aria-label="{{p.title}}" style="position:absolute;inset:0;width:100%;height:100%;background:transparent;border:0;padding:0;color:inherit;text-align:left;z-index:2;opacity:0"></button>
+          <sc-if value="{{p.active}}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:0;padding:32px;display:flex;flex-direction:column;box-sizing:border-box">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                <span class="mono" style="font-size:11px;letter-spacing:.14em;color:#FF8A3D">{{p.n}} / {{p.tag}}</span>
+                <span class="mono" style="font-size:11px;color:#A3A39C">{{p.cat}}</span>
+              </div>
+              <div style="height:210px;border:1px solid rgba(237,237,232,.1);border-radius:3px;background:#050505;overflow:hidden;margin-bottom:24px">
+                <sc-if value="{{p.isSatya}}" hint-placeholder-val="{{ true }}">
+                  <svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block" aria-hidden="true">
+                    <defs><pattern id="ht" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.7" fill="#EDEDE8"></circle></pattern>
+                    <radialGradient id="hg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"></stop><stop offset="1" stop-color="#000"></stop></radialGradient>
+                    <mask id="hm"><ellipse cx="170" cy="105" rx="82" ry="98" fill="url(#hg)"></ellipse></mask></defs>
+                    <rect width="600" height="210" fill="url(#ht)" mask="url(#hm)" opacity=".85"></rect>
+                    <ellipse cx="260" cy="105" rx="70" ry="92" fill="none" stroke="#EDEDE8" stroke-opacity=".55"></ellipse>
+                    <ellipse cx="260" cy="105" rx="70" ry="30" fill="none" stroke="#EDEDE8" stroke-opacity=".3"></ellipse>
+                    <ellipse cx="260" cy="105" rx="30" ry="92" fill="none" stroke="#EDEDE8" stroke-opacity=".3"></ellipse>
+                    <line x1="190" y1="105" x2="330" y2="105" stroke="#EDEDE8" stroke-opacity=".3"></line>
+                    <path d="M360 105 L380 105 L392 70 L404 140 L416 55 L428 150 L440 85 L452 120 L466 105 L580 105" fill="none" stroke="#FF8A3D" stroke-width="1.5"></path>
+                    <circle cx="330" cy="105" r="5" fill="#FF8A3D"></circle><line x1="330" y1="105" x2="360" y2="105" stroke="#FF8A3D"></line>
+                    <text x="360" y="190" fill="#A3A39C" font-size="10" font-family="JetBrains Mono, monospace">VISUAL + AUDIO FORENSICS</text>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{p.isDoc}}" hint-placeholder-val="{{ false }}">
+                  <svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block" aria-hidden="true">
+                    <g fill="none" stroke="#EDEDE8" stroke-opacity=".5"><rect x="40" y="50" width="70" height="92"></rect><rect x="52" y="38" width="70" height="92"></rect><rect x="64" y="26" width="70" height="92"></rect></g>
+                    <g stroke="#EDEDE8" stroke-opacity=".3"><line x1="76" y1="48" x2="122" y2="48"></line><line x1="76" y1="60" x2="122" y2="60"></line><line x1="76" y1="72" x2="110" y2="72"></line></g>
+                    <path d="M150 90 L220 90" stroke="#EDEDE8" stroke-dasharray="4 4" stroke-opacity=".6"></path>
+                    <g fill="none" stroke="#EDEDE8" stroke-opacity=".6"><rect x="230" y="40" width="46" height="18"></rect><rect x="230" y="68" width="46" height="18"></rect><rect x="230" y="96" width="46" height="18"></rect><rect x="230" y="124" width="46" height="18"></rect></g>
+                    <path d="M290 90 L350 90" stroke="#EDEDE8" stroke-dasharray="4 4" stroke-opacity=".6"></path>
+                    <g stroke="#EDEDE8" stroke-opacity=".3"><line x1="380" y1="50" x2="440" y2="95"></line><line x1="440" y1="95" x2="500" y2="60"></line><line x1="380" y1="140" x2="440" y2="95"></line><line x1="440" y1="95" x2="510" y2="140"></line><line x1="500" y1="60" x2="560" y2="100"></line><line x1="510" y1="140" x2="560" y2="100"></line></g>
+                    <g fill="#EDEDE8"><circle cx="380" cy="50" r="3"></circle><circle cx="500" cy="60" r="3"></circle><circle cx="380" cy="140" r="3"></circle><circle cx="510" cy="140" r="3"></circle><circle cx="560" cy="100" r="3"></circle></g>
+                    <circle cx="440" cy="95" r="7" fill="#FF8A3D"></circle><circle cx="440" cy="95" r="16" fill="none" stroke="#FF8A3D" stroke-opacity=".5"></circle>
+                    <text x="40" y="190" fill="#A3A39C" font-size="10" font-family="JetBrains Mono, monospace">INGEST → CHUNK → EMBED → RETRIEVE → ANSWER</text>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{p.isAgent}}" hint-placeholder-val="{{ false }}">
+                  <svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block" aria-hidden="true">
+                    <rect x="24" y="22" width="552" height="166" fill="none" stroke="#EDEDE8" stroke-opacity=".3"></rect>
+                    <line x1="24" y1="46" x2="576" y2="46" stroke="#EDEDE8" stroke-opacity=".3"></line>
+                    <circle cx="42" cy="34" r="4" fill="#FF8A3D"></circle><circle cx="58" cy="34" r="4" fill="none" stroke="#EDEDE8" stroke-opacity=".5"></circle><circle cx="74" cy="34" r="4" fill="none" stroke="#EDEDE8" stroke-opacity=".5"></circle>
+                    <g font-family="JetBrains Mono, monospace" font-size="13" fill="#EDEDE8">
+                      <text x="44" y="78" fill="#FF8A3D">$ agent --mode plan</text>
+                      <text x="44" y="102" fill="#A3A39C">→ read_file  src/app.py</text>
+                      <text x="44" y="124" fill="#A3A39C">→ list_files  ./</text>
+                      <text x="44" y="146" fill="#A3A39C">→ write_file tests/test_app.py</text>
+                      <text x="44" y="170" fill="#EDEDE8">workspace-scoped · memory: postgres █</text>
+                    </g>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{p.isEda}}" hint-placeholder-val="{{ false }}">
+                  <svg viewBox="0 0 600 210" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block" aria-hidden="true">
+                    <g stroke="#EDEDE8" stroke-opacity=".1"><line x1="40" y1="50" x2="560" y2="50"></line><line x1="40" y1="90" x2="560" y2="90"></line><line x1="40" y1="130" x2="560" y2="130"></line><line x1="40" y1="170" x2="560" y2="170"></line></g>
+                    <g fill="#EDEDE8" fill-opacity=".7"><rect x="60" y="120" width="34" height="50"></rect><rect x="110" y="90" width="34" height="80"></rect><rect x="160" y="60" width="34" height="110"></rect><rect x="210" y="100" width="34" height="70"></rect><rect x="260" y="75" width="34" height="95"></rect></g>
+                    <path d="M340 150 L390 120 L440 132 L490 80 L545 56" fill="none" stroke="#FF8A3D" stroke-width="1.6"></path>
+                    <circle cx="545" cy="56" r="5" fill="#FF8A3D"></circle>
+                    <text x="340" y="195" fill="#A3A39C" font-size="10" font-family="JetBrains Mono, monospace">DISTRIBUTIONS · CORRELATIONS · AI SUMMARY</text>
+                  </svg>
+                </sc-if>
+              </div>
+              <h3 style="margin:0 0 6px;font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1.05">{{p.title}}</h3>
+              <div style="font-size:15px;color:#FF8A3D;margin-bottom:14px">{{p.highlight}}</div>
+              <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#A3A39C">{{p.desc}}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:auto">
+                <sc-for list="{{p.stack}}" as="s" hint-placeholder-count="5">
+                  <span class="mono" style="font-size:10.5px;border:1px solid rgba(237,237,232,.2);border-radius:999px;padding:5px 11px;color:#D8D8D2">{{s.t}}</span>
+                </sc-for>
+              </div>
+              <div style="display:flex;gap:12px;position:relative;z-index:3;margin-top:20px">
+                <a href="{{p.gh}}" class="mono btn-ghost" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border-radius:999px;min-height:20px">GitHub ↗</a>
+                <sc-if value="{{p.hasLive}}" hint-placeholder-val="{{ false }}">
+                  <a href="{{p.live}}" class="mono btn-primary" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border-radius:999px;color:#0A0A0A">Live demo ↗</a>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{p.inactive}}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;inset:0;padding:28px 0;display:flex;flex-direction:column;align-items:center;justify-content:space-between">
+              <span class="mono" style="font-size:12px;color:#FF8A3D;letter-spacing:.1em">{{p.n}}</span>
+              <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:28px;font-weight:600;letter-spacing:-.01em;color:#EDEDE8">{{p.title}}</span>
+              <span class="mono" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;color:#A3A39C;letter-spacing:.1em">{{p.tag}}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:48px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+      <span class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C">Also built</span>
+      <span class="mono chip" style="font-size:12px;border:1px solid rgba(237,237,232,.2);border-radius:999px;padding:8px 16px">Detectify — object detection &amp; alerts</span>
+      <span class="mono chip" style="font-size:12px;border:1px solid rgba(237,237,232,.2);border-radius:999px;padding:8px 16px">Diabetes Agent</span>
+      <a href="https://github.com/aryan07-exe" class="mono" style="font-size:12px;color:#FF8A3D;padding:8px 4px">50+ repositories on GitHub ↗</a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding:100px 64px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">04</span><span>Tools &amp; tech stack</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <h2 style="margin:0 0 64px;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em;max-width:900px">The stack behind the systems.</h2>
+
+    <div style="display:flex;flex-wrap:wrap;gap:48px">
+      <div role="tablist" aria-label="Skill groups" style="flex:0 1 340px;min-width:260px;display:flex;flex-direction:column">
+        <sc-for list="{{skillTabs}}" as="g" hint-placeholder-count="6">
+          <button role="tab" aria-selected="{{g.sel}}" onClick="{{g.pick}}" onMouseEnter="{{g.pick}}" style="display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid rgba(237,237,232,.14);padding:20px 0;color:{{g.color}};font-size:24px;font-weight:600;letter-spacing:-.01em">
+            <span>{{g.name}}</span><span class="mono" style="font-size:12px;color:#A3A39C">{{g.count}}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div role="tabpanel" style="flex:1 1 560px;min-width:0;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:44px;box-sizing:border-box;background:#0A0A09;min-height:420px">
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D;margin-bottom:12px">{{skillActive.name}}</div>
+        <div style="font-size:17px;color:#A3A39C;margin-bottom:32px;max-width:560px;line-height:1.5">{{skillActive.blurb}}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <sc-for list="{{skillActive.items}}" as="i" hint-placeholder-count="8">
+            <span class="chip" style="font-size:20px;font-weight:500;border:1px solid rgba(237,237,232,.22);border-radius:999px;padding:12px 24px;color:#EDEDE8">{{i.t}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" style="padding:100px 64px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">05</span><span>Achievements</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <h2 style="margin:0 0 64px;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em;max-width:900px">Built under pressure, on national stages.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <sc-for list="{{awards}}" as="a" hint-placeholder-count="3">
+        <article class="card" style="flex:1 1 340px;min-width:0;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:36px;box-sizing:border-box;background:#0A0A09;display:flex;flex-direction:column;min-height:340px">
+          <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C">{{a.venue}}</div>
+          <div style="font-size:112px;line-height:1;font-weight:800;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #EDEDE8;margin:28px 0 auto">{{a.big}}</div>
+          <div style="font-size:22px;font-weight:600;margin-top:24px">{{a.title}}</div>
+          <div style="font-size:15px;color:#A3A39C;margin-top:8px;line-height:1.5">{{a.note}}</div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px">
+      <div style="flex:1 1 520px;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:28px 32px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D">Research</div>
+        <div style="font-size:17px;flex:1 1 360px;line-height:1.5">MANIT Bhopal — solar-panel tilt prediction with ML · IIITM Gwalior × IIT Hyderabad (iHub-Data) — synthetic scenario generation for Indian traffic</div>
+      </div>
+      <div style="flex:1 1 520px;border:1px solid rgba(237,237,232,.14);border-radius:4px;padding:28px 32px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8A3D">2025 snapshot</div>
+        <div style="font-size:17px;flex:1 1 360px;line-height:1.5">150 DSA problems solved · 50-day LeetCode streak · 300+ GitHub commits</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="journey" style="padding:100px 64px;max-width:1440px;margin:0 auto;box-sizing:border-box">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">06</span><span>Journey</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <h2 style="margin:0 0 72px;font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.025em;max-width:900px">From foundations to production AI.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:0;position:relative">
+      <sc-for list="{{journey}}" as="j" hint-placeholder-count="5">
+        <div style="flex:1 1 220px;min-width:0;padding:0 24px 0 0;box-sizing:border-box;position:relative">
+          <div style="display:flex;align-items:center;margin-bottom:28px">
+            <span style="width:14px;height:14px;border-radius:50%;background:{{j.dot}};border:1px solid #FF8A3D;flex:none"></span>
+            <span style="flex:1;height:1px;background:rgba(237,237,232,.25)"></span>
+          </div>
+          <div class="mono" style="font-size:11px;letter-spacing:.14em;color:#FF8A3D;margin-bottom:10px">{{j.n}} · {{j.when}}</div>
+          <div style="font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px">{{j.title}}</div>
+          <div style="font-size:15px;color:#A3A39C;line-height:1.55">{{j.text}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:140px 64px 80px;max-width:1440px;margin:0 auto;box-sizing:border-box;position:relative">
+    <div class="mono" style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3A39C;margin-bottom:56px">
+      <span style="color:#FF8A3D">07</span><span>Contact</span><span style="flex:1;height:1px;background:rgba(237,237,232,.14)"></span>
+    </div>
+    <h2 style="margin:0 0 48px;font-size:132px;line-height:.95;font-weight:800;letter-spacing:-.04em;max-width:1100px">Let's build something <span style="color:#FF8A3D">intelligent.</span></h2>
+    <a href="mailto:aryansahu7000@gmail.com" style="display:inline-block;font-size:36px;font-weight:500;letter-spacing:-.01em;border-bottom:1px solid rgba(237,237,232,.4);padding-bottom:6px;margin-bottom:56px">aryansahu7000@gmail.com</a>
+    <div style="display:flex;flex-wrap:wrap;gap:14px">
+      <a href="https://www.linkedin.com/in/aaryan-sahu-bb680a258/" class="mono btn-ghost" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px">LinkedIn ↗</a>
+      <a href="https://github.com/aryan07-exe" class="mono btn-ghost" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px">GitHub ↗</a>
+      <a href="#" class="mono btn-primary" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px">Download résumé ↓</a>
+    </div>
+  </section>
+
+  <footer style="max-width:1440px;margin:0 auto;padding:32px 64px 40px;box-sizing:border-box;border-top:1px solid rgba(237,237,232,.12);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px">
+    <span class="mono" style="font-size:12px;color:#A3A39C">© 2026 Aaryan Sahu · Gwalior, India</span>
+    <span class="mono" style="font-size:12px;color:#A3A39C">"Living in dark (light attracts bugs)"</span>
+    <a href="#top" class="mono" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Back to top ↑</a>
+  </footer>
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const ae = s.exp ?? 0;
+    const ap = s.proj ?? 0;
+    const as = s.skill ?? 0;
+    const A = '#FF8A3D';
+    const T = (arr) => arr.map((t) => ({ t }));
+
+    const exps = [
+      { org: 'Predusk Technology', role: 'AI Engineer', place: 'Jaipur, India', dates: 'Apr 2026 — Present',
+        narrative: 'Production AI and data infrastructure: annotation quality, evaluation metrics, multi-tenancy and backend architecture.',
+        bullets: T([
+          'Designed and shipped a production Inter-Annotator Agreement (IAA) quality framework across the platform\'s annotation engine, automating consensus measurement and quality control for multi-annotator workflows.',
+          'Built custom metric pipelines: IoU for bounding boxes, F1 for text/span labels, Cohen\'s Kappa and Class Agreement for categorical annotations.',
+          'Architected multi-tenant Role-Based Access Control (RBAC) across backend microservices; organizations define custom role sets at workspace creation.',
+          'Enforced role availability consistently across 5+ downstream retrieval and query APIs.' ]),
+        metrics: [ { v: '~60%', l: 'less manual QA audit effort' }, { v: '50,000+', l: 'annotations covered by the framework' }, { v: '5+', l: 'APIs enforcing role availability' } ],
+        tags: T(['IAA', 'IoU', 'F1', "Cohen's Kappa", 'RBAC', 'Microservices', 'Multi-tenancy']) },
+      { org: 'NeoLen', role: 'AI Engineer Intern', place: 'Remote', dates: 'Jan 2026 — Apr 2026',
+        narrative: 'Applied agentic AI and voice AI for an Ayurveda-based healthcare platform.',
+        bullets: T([
+          'Designed multi-agent LangGraph systems with specialized diagnostic and clinical-recommendation agents for real-time patient decision-making.',
+          'Engineered streaming voice AI consultation agents combining speech-to-text, LLMs and text-to-speech.',
+          'Optimized token-window usage, improving agent response efficiency while maintaining output quality.',
+          'Integrated structured EHR data pipelines with LLMs and extracted clinical parameters from unstructured patient history.' ]),
+        metrics: [ { v: '~35%', l: 'better agent response efficiency' }, { v: '~30%', l: 'faster consultation turnaround (pilot)' } ],
+        tags: T(['LangGraph', 'Voice AI', 'STT / TTS', 'LLMs', 'EHR data']) },
+      { org: 'MANIT Bhopal', role: 'Machine Learning Research Intern', place: 'Bhopal, India', dates: '[dates to confirm]',
+        narrative: 'Optimal Tilt Angle Prediction for Solar Panels using Machine Learning Techniques.',
+        bullets: T([
+          'Data preprocessing and feature engineering on real-world solar datasets.',
+          'Implemented and evaluated multiple regression models.',
+          'Predicted optimal tilt angles from geographical coordinates, seasonal patterns and solar irradiance data.',
+          'Developed a scalable approach to support solar power planning across regions.' ]),
+        metrics: [], tags: T(['Regression', 'Feature engineering', 'Scikit-learn', 'Energy analytics']) },
+      { org: 'IIITM Gwalior × IIT Hyderabad', role: 'Research Intern', place: 'Gwalior, India', dates: '[dates to confirm]',
+        narrative: 'Self-Aware Synthetic Scenario Generation for the Indian Traffic.',
+        bullets: T([
+          'Selected for a research internship at ABV-IIITM Gwalior on a sponsored project with IIT Hyderabad under the iHub-Data initiative.',
+          'Research themes: autonomous systems, synthetic data generation and intelligent mobility.' ]),
+        metrics: [], tags: T(['Synthetic data', 'Autonomous systems', 'Intelligent mobility', 'iHub-Data']) }
+    ];
+    const expList = exps.map((e, i) => ({ org: e.org, role: e.role, dates: e.dates, sel: i === ae,
+      color: i === ae ? A : '#EDEDE8', bar: i === ae ? A : 'transparent',
+      pick: () => this.setState({ exp: i }) }));
+    const exp = Object.assign({}, exps[ae], { hasMetrics: exps[ae].metrics.length > 0 });
+
+    const pr = [
+      { n: '01', tag: 'MULTIMODAL AI', cat: 'Deep learning · Vision', title: 'SatyaNetra', id: 'satya', highlight: '~92% accuracy on benchmark real/fake video sets',
+        desc: 'A multimodal deepfake detector fusing facial visual analysis (ResNet50 + LSTM) with audio spectrogram embeddings (YAMNet). The hybrid temporal approach beat single-frame CNN baselines by ~8%, with low-latency inference per clip.',
+        stack: T(['PyTorch', 'ResNet50', 'LSTM', 'YAMNet', 'OpenCV']), gh: 'https://github.com/aryan07-exe/Deepfake', live: '' },
+      { n: '02', tag: 'RAG / GENAI', cat: 'Full-stack AI', title: 'DocMind', id: 'doc', highlight: 'Document-grounded AI assistant',
+        desc: 'Upload PDF, TXT or DOCX and chat with your documents — per document or across all. Chunking, embeddings, semantic retrieval and user-scoped isolation with persistent chat history.',
+        stack: T(['LangGraph', 'FastAPI', 'React', 'PostgreSQL', 'Chroma', 'Gemini']), gh: 'https://github.com/aryan07-exe/DocMind-RagProject', live: 'https://doc-mind-rag-project.vercel.app/' },
+      { n: '03', tag: 'AGENTIC AI', cat: 'Developer tools', title: 'Terminal Agent', id: 'agent', highlight: 'Workspace-scoped coding agent with persistent memory',
+        desc: 'A CLI coding agent on a LangGraph state machine with agent, plan and ask modes. Sandboxed file tools with path-escape protection, and Postgres-backed project memory across sessions.',
+        stack: T(['LangGraph', 'LangChain', 'Python', 'PostgreSQL', 'Docker', 'OpenRouter']), gh: 'https://github.com/aryan07-exe/terminal_agent', live: '' },
+      { n: '04', tag: 'AI + DATA', cat: 'Analytics', title: 'Analytix', id: 'eda', highlight: 'Automated EDA + AI analyst',
+        desc: 'Drop in a dataset and get type detection, distributions, correlations, interactive charts, AI-written executive summaries and an analyst chat — in a responsive dashboard.',
+        stack: T(['FastAPI', 'React', 'Vite', 'Gemini', 'Pandas', 'Tailwind']), gh: 'https://github.com/aryan07-exe/eda_agent', live: 'https://eda-agent-brown.vercel.app/' }
+    ];
+    const projects = pr.map((p, i) => {
+      const active = i === ap;
+      return Object.assign({}, p, { active, inactive: !active, flex: active ? 3.6 : 1,
+        border: active ? A : 'rgba(237,237,232,.14)',
+        isSatya: p.id === 'satya', isDoc: p.id === 'doc', isAgent: p.id === 'agent', isEda: p.id === 'eda',
+        hasLive: !!p.live, pick: () => this.setState({ proj: i }) });
+    });
+
+    const groups = [
+      { name: 'GenAI & Agents', blurb: 'LLM applications, orchestration and agent systems.', items: ['LangChain', 'LangGraph', 'LiteLLM', 'RAG pipelines', 'Prompt engineering', 'Fine-tuning', 'PEFT', 'LoRA', 'QLoRA', 'Pydantic', 'Multi-agent systems'] },
+      { name: 'ML & Vision', blurb: 'Deep learning, computer vision and model evaluation.', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'CNN', 'RNN', 'LSTM', 'ResNet50', 'YAMNet', 'OpenCV', 'Inter-Annotator Agreement'] },
+      { name: 'Data & Search', blurb: 'Storage, retrieval and analysis.', items: ['PostgreSQL', 'MongoDB', 'SQLAlchemy', 'ChromaDB', 'Vector search', 'Hybrid search', 'Pandas', 'NumPy', 'EDA', 'Data quality profiling'] },
+      { name: 'Backend', blurb: 'APIs and services that wrap the models.', items: ['FastAPI', 'REST APIs', 'Flask', 'Streamlit', 'Redis', 'Celery'] },
+      { name: 'Infrastructure', blurb: 'Shipping and running it.', items: ['Docker', 'Git', 'GitHub', 'CI/CD', 'Linux'] },
+      { name: 'Languages & Frontend', blurb: 'Languages plus the UI layer used in projects.', items: ['Python', 'SQL', 'JavaScript', 'Java', 'React', 'Vite', 'Tailwind CSS'] }
+    ];
+    const skillTabs = groups.map((g, i) => ({ name: g.name, count: String(g.items.length).padStart(2, '0'), sel: i === as,
+      color: i === as ? A : '#EDEDE8', pick: () => this.setState({ skill: i }) }));
+    const skillActive = { name: groups[as].name, blurb: groups[as].blurb, items: T(groups[as].items) };
+
+    return {
+      profile: [ { k: 'ROLE', v: 'AI Engineer · Predusk Technology' }, { k: 'BASE', v: 'Gwalior, India' }, { k: 'EDUCATION', v: 'B.Tech CSE · ITM University · CGPA 8.4' }, { k: 'FOCUS', v: 'GenAI · Agents · ML · Backend' } ],
+      stats: [ { v: '50,000+', l: 'ANNOTATIONS UNDER AN AUTOMATED QUALITY FRAMEWORK' }, { v: '~60%', l: 'LESS MANUAL QA AUDIT EFFORT' }, { v: '~92%', l: 'DEEPFAKE CLASSIFICATION ACCURACY' }, { v: 'Top 5', l: 'IIT BOMBAY NATIONAL HACKATHON, 100+ TEAMS' } ],
+      expList, exp, projects, skillTabs, skillActive,
+      awards: [
+        { venue: 'IIITM Gwalior · Infotsav', big: '2nd', title: '2nd place — hackathon', note: 'Won with SatyaNetra, the multimodal deepfake detection system.' },
+        { venue: 'NIT Bhopal · Version Beta 7.0', big: 'RU', title: 'Runner-up — national hackathon', note: 'Reached the finals and completed the assigned problem statement.' },
+        { venue: 'IIT Bombay · National', big: 'Top 5', title: 'Finalist among 100+ teams', note: 'Ranked among the top five finalist teams at the national hackathon.' }
+      ],
+      journey: [
+        { n: '01', when: '2022', title: 'Foundations', text: 'B.Tech in Computer Science & Engineering at ITM University, Gwalior.', dot: '#FF8A3D' },
+        { n: '02', when: 'Research', title: 'Applied ML & research', text: 'Solar tilt prediction at MANIT; synthetic traffic scenarios at IIITM × IIT Hyderabad.', dot: '#050505' },
+        { n: '03', when: 'Projects', title: 'AI product engineering', text: 'SatyaNetra, DocMind and Analytix — models wrapped into real products.', dot: '#050505' },
+        { n: '04', when: 'Jan 2026', title: 'Agentic AI', text: 'Multi-agent LangGraph and voice AI systems at NeoLen.', dot: '#050505' },
+        { n: '05', when: 'Apr 2026', title: 'Production AI engineering', text: 'IAA quality framework and multi-tenant RBAC at Predusk.', dot: '#FF8A3D' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

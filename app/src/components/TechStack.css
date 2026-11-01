@@ -1,0 +1,335 @@
+.tech {
+  padding-top: 100px;
+  padding-bottom: 140px;
+  overflow: hidden;
+}
+
+.tech-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 8px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tech-header__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-transform: none;
+}
+
+.tech-header__body {
+  max-width: 640px;
+}
+
+.tech-blurb {
+  color: #999;
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 14px 0 0;
+}
+
+.techStage {
+  height: min(690px, 85vh);
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #171714 0, #0a0a09 45%, #080808 72%);
+}
+
+.techStage::before,
+.techStage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.techStage::before {
+  background:
+    linear-gradient(90deg, transparent 49.9%, #252522 50%, transparent 50.1%),
+    linear-gradient(0deg, transparent 49.9%, #252522 50%, transparent 50.1%);
+  opacity: 0.4;
+}
+
+.techStage::after {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 79px, #181816 80px),
+    repeating-linear-gradient(0deg, transparent 0 79px, #181816 80px);
+  opacity: 0.22;
+}
+
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 230px;
+  height: 230px;
+  border: 1px solid #4a4944;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 3;
+  background: #0b0b0a;
+  box-shadow: 0 0 80px #000;
+}
+
+.core::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed #34332f;
+  border-radius: 50%;
+  animation: spin 16s linear infinite;
+}
+
+.core strong {
+  font-size: 22px;
+  letter-spacing: -0.05em;
+  display: block;
+}
+
+.core small {
+  display: block;
+  color: #777;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  font-family: var(--mono);
+}
+
+.beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1px;
+  width: 72%;
+  background: linear-gradient(90deg, transparent, #403f39, transparent);
+  transform-origin: left;
+  opacity: 0.5;
+}
+
+.b1 {
+  transform: rotate(17deg);
+}
+.b2 {
+  transform: rotate(142deg);
+}
+.b3 {
+  transform: rotate(245deg);
+}
+
+.skill {
+  position: absolute;
+  z-index: 5;
+  border: 1px solid #383833;
+  background: #0b0b0a;
+  padding: 12px 14px;
+  min-width: 120px;
+  cursor: pointer;
+  transition: 0.35s;
+  box-shadow: 0 8px 30px #0008;
+  color: inherit;
+  text-align: left;
+}
+
+.skill:hover,
+.skill:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 15px 45px #000;
+  outline: none;
+}
+
+.skill--dim {
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.skill b {
+  font-size: 12px;
+  display: block;
+}
+
+.skill span {
+  display: block;
+  font-size: 8px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  margin-top: 5px;
+  font-family: var(--mono);
+}
+
+.s1 {
+  left: 8%;
+  top: 16%;
+}
+.s2 {
+  left: 25%;
+  top: 38%;
+}
+.s3 {
+  left: 11%;
+  top: 66%;
+}
+.s4 {
+  left: 38%;
+  top: 76%;
+}
+.s5 {
+  right: 8%;
+  top: 18%;
+}
+.s6 {
+  right: 24%;
+  top: 40%;
+}
+.s7 {
+  right: 10%;
+  top: 67%;
+}
+.s8 {
+  right: 36%;
+  top: 77%;
+}
+.s9 {
+  left: 47%;
+  top: 12%;
+}
+.s10 {
+  left: 47%;
+  top: 86%;
+}
+
+.techInfo {
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  z-index: 6;
+  color: #777;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.techInfo strong {
+  color: #ddd;
+  font-size: 12px;
+  display: block;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+.techLegend {
+  position: absolute;
+  right: 25px;
+  bottom: 24px;
+  z-index: 6;
+  color: #555;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.cat {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  z-index: 6;
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.cat button {
+  background: transparent;
+  border: 1px solid #333;
+  color: #777;
+  padding: 8px 10px;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.cat button.active,
+.cat button:hover {
+  color: #fff;
+  border-color: #777;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .tech-header {
+    gap: 16px;
+  }
+  .techStage {
+    height: 590px;
+  }
+  .skill {
+    min-width: 100px;
+  }
+  .s1 {
+    left: 4%;
+    top: 18%;
+  }
+  .s2 {
+    left: 3%;
+    top: 43%;
+  }
+  .s3 {
+    left: 8%;
+    top: 70%;
+  }
+  .s4 {
+    left: 28%;
+    top: 78%;
+  }
+  .s5 {
+    right: 3%;
+    top: 18%;
+  }
+  .s6 {
+    right: 3%;
+    top: 43%;
+  }
+  .s7 {
+    right: 7%;
+    top: 70%;
+  }
+  .s8 {
+    right: 28%;
+    top: 78%;
+  }
+  .s9 {
+    left: 39%;
+    top: 10%;
+  }
+  .s10 {
+    left: 39%;
+    top: 88%;
+  }
+  .core {
+    width: 175px;
+    height: 175px;
+  }
+  .core strong {
+    font-size: 16px;
+  }
+}
